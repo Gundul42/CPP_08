@@ -6,7 +6,7 @@
 /*   By: graja <graja@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 18:59:20 by graja             #+#    #+#             */
-/*   Updated: 2022/03/16 13:32:14 by graja            ###   ########.fr       */
+/*   Updated: 2022/03/16 14:49:40 by graja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,22 +41,23 @@ void	Span::addNumber(int const nbr)
 		_data.push_back(nbr);
 }
 
-int	Span::shortestSpan(void)
+unsigned int	Span::shortestSpan(void) const
 {
+	std::vector<int>	cpy(_data);
 	int	min = 0;
-	std::vector<int>::iterator	a = _data.begin();
-	std::vector<int>::iterator	b = _data.begin();
+	std::vector<int>::iterator	a = cpy.begin();
+	std::vector<int>::iterator	b = cpy.begin();
 
-	if (this->_data.size() < 2)
+	if (cpy.size() < 2)
 		throw Span::NoSpanException();
 	else
 	{
 		b++;
 		min = abs(*a - *b);
-		while (min && a != _data.end() - 1)
+		while (min && a != cpy.end() - 1)
 		{
 			b = a + 1;
-			while (min && b != _data.end())
+			while (min && b != cpy.end())
 			{
 				if (abs(*a - *b) < min)
 					min = abs(*a - *b);
@@ -68,26 +69,15 @@ int	Span::shortestSpan(void)
 	}
 }
 
-int	Span::longestSpan(void)
+unsigned int	Span::longestSpan(void) const
 {
-	int	min = 0;
-	int	max = 0;
-	std::vector<int>::iterator	a = _data.begin();
+	std::vector<int>	cpy(_data);
 
-	if (this->_data.size() < 2)
+	if (_data.size() < 2)
 		throw Span::NoSpanException();
 	else
 	{
-		min = *a;
-		max = *a;
-		while (a != _data.end())
-		{
-			if (*a < min)
-				min = *a;
-			if (*a > max)
-				max = *a;
-			a++;
-		}
-		return (abs(max - min));
+		return (*std::max_element(cpy.begin(), cpy.end()) -
+			*std::min_element(cpy.begin(), cpy.end()));
 	}
 }

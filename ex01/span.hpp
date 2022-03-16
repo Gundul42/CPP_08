@@ -6,7 +6,7 @@
 /*   By: graja <graja@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 18:24:31 by graja             #+#    #+#             */
-/*   Updated: 2022/03/16 13:16:00 by graja            ###   ########.fr       */
+/*   Updated: 2022/03/16 14:50:45 by graja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,9 +32,9 @@ class Span
 
 		Span & operator=(Span const & right);
 
-		void    addNumber(int const nbr);
-                int     shortestSpan(void);
-                int     longestSpan(void);
+		void			addNumber(int const nbr);
+		unsigned int	shortestSpan(void) const;
+		unsigned int	longestSpan(void) const;
 
 	class SpanIsFullException : public std::exception
 	{
