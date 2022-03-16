@@ -6,7 +6,7 @@
 /*   By: graja <graja@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 18:24:31 by graja             #+#    #+#             */
-/*   Updated: 2022/03/15 19:13:13 by graja            ###   ########.fr       */
+/*   Updated: 2022/03/16 13:16:00 by graja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,8 @@
 
 # include <vector>
 # include <stdexcept>
+# include <iostream>
+# include <algorithm>
 
 class Span
 {
@@ -30,12 +32,25 @@ class Span
 
 		Span & operator=(Span const & right);
 
-	class SpanIsFullexception : public std::exception
+		void    addNumber(int const nbr);
+                int     shortestSpan(void);
+                int     longestSpan(void);
+
+	class SpanIsFullException : public std::exception
 	{
 		public:
 			virtual const char * what() const throw ()
 			{
 				return ("ERROR: Span max entries reached");
+			}
+	};
+	
+	class NoSpanException : public std::exception
+	{
+		public:
+			virtual const char * what() const throw ()
+			{
+				return ("ERROR: Not enough data for a span");
 			}
 	};
 };
