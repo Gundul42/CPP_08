@@ -6,7 +6,7 @@
 /*   By: graja <graja@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 18:24:31 by graja             #+#    #+#             */
-/*   Updated: 2022/03/16 14:50:45 by graja            ###   ########.fr       */
+/*   Updated: 2022/03/16 17:47:36 by graja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 class Span
 {
 	private:
-		unsigned int const		_N;
+		unsigned int const	_N;
 		std::vector<int>	_data;
 
 	public:
@@ -32,7 +32,9 @@ class Span
 
 		Span & operator=(Span const & right);
 
-		void			addNumber(int const nbr);
+		void		addNumber(int const nbr);
+		void		addNumber(std::vector<int>::iterator const a,
+					std::vector<int>::iterator const b);
 		unsigned int	shortestSpan(void) const;
 		unsigned int	longestSpan(void) const;
 

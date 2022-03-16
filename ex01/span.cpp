@@ -6,7 +6,7 @@
 /*   By: graja <graja@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 18:59:20 by graja             #+#    #+#             */
-/*   Updated: 2022/03/16 14:49:40 by graja            ###   ########.fr       */
+/*   Updated: 2022/03/16 17:47:18 by graja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,10 +41,18 @@ void	Span::addNumber(int const nbr)
 		_data.push_back(nbr);
 }
 
+void	Span::addNumber(std::vector<int>::iterator const a, std::vector<int>::iterator const b)
+{
+	if (b - a > _N)
+		throw Span::SpanIsFullException();
+	else
+		_data.assign(a, b);
+}
+
 unsigned int	Span::shortestSpan(void) const
 {
-	std::vector<int>	cpy(_data);
-	int	min = 0;
+	std::vector<int>		cpy(_data);
+	int				min = 0;
 	std::vector<int>::iterator	a = cpy.begin();
 	std::vector<int>::iterator	b = cpy.begin();
 
