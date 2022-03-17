@@ -6,7 +6,7 @@
 /*   By: graja <graja@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/09 10:35:45 by graja             #+#    #+#             */
-/*   Updated: 2022/03/15 18:09:52 by graja            ###   ########.fr       */
+/*   Updated: 2022/03/17 12:57:47 by graja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ int	main(void)
 	}
 	std::cout << std::endl;
 	std::cout << ">>> " << sfor << " <<< was ";
-	if (!EasyFind(test, sfor))
-	     std::cout << "not ";
-	std::cout << "found !" << std::endl << std::endl;
-
+	try
+	{
+		EasyFind(test, sfor);
+		std::cout << "found !" << std::endl;
+	}
+	catch	(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
 	//now with std::list container
 	std::list<int>		test1 = {-12, 12332, 112, -500, 1, 2, 4, -234};
 	std::list<int>::iterator it1 = test1.begin();
@@ -45,9 +51,16 @@ int	main(void)
 	}
 	std::cout << std::endl;
 	std::cout << ">>> " << sfor1 << " <<< was ";
-	if (!EasyFind(test1, sfor1))
-	     std::cout << "not ";
-	std::cout << "found !" << std::endl << std::endl;
+	try
+	{
+		EasyFind(test1, sfor1);
+		std::cout << "found !" << std::endl;
+	}
+	catch	(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
 
 	//now with std::deque container
 	std::deque<int>		test2 = {2, 132, 12, 0, -1231, 1282, -14, 34};
@@ -61,8 +74,16 @@ int	main(void)
 	}
 	std::cout << std::endl;
 	std::cout << ">>> " << sfor2 << " <<< was ";
-	if (!EasyFind(test1, sfor2))
-	     std::cout << "not ";
-	std::cout << "found !" << std::endl;
+	try
+	{
+		EasyFind(test2, sfor2);
+		std::cout << "found !" << std::endl;
+	}
+	catch	(std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
+	std::cout << std::endl;
+
 	return (0);
 }

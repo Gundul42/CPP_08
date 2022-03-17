@@ -6,25 +6,30 @@
 /*   By: graja <graja@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 13:29:23 by graja             #+#    #+#             */
-/*   Updated: 2022/03/15 17:39:29 by graja            ###   ########.fr       */
+/*   Updated: 2022/03/17 12:53:09 by graja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef EASYFIND_H
 # define EASYFIND_H
 
-template <typename T>
-bool	EasyFind(T cont, int nbr)
-{
-	typename T::iterator	it = cont.begin();
+# include <algorithm>
+# include <stdexcept>
 
-	while (it != cont.end())
-	{
-		if (*it == nbr)
-			return (true);
-		it++;
-	}
-	return (false);
+class EasyNotFoundException : public std::exception
+{
+	public:
+		virtual const char * what() const throw ()
+		{
+			return ("ERROR: Nothing could be found");
+		}
+};
+
+template <typename T>
+void	EasyFind(T cont, int nbr)
+{
+	if (std::find(cont.begin(), cont.end(), nbr) == cont.end())
+		throw EasyNotFoundException();
 }
 
 #endif
