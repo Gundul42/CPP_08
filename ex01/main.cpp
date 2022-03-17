@@ -6,7 +6,7 @@
 /*   By: graja <graja@student.42wolfsburg.de>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/15 18:24:02 by graja             #+#    #+#             */
-/*   Updated: 2022/03/16 18:06:41 by graja            ###   ########.fr       */
+/*   Updated: 2022/03/17 13:41:53 by graja            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 int	main(void)
 {
-	Span	test(11);
+	Span	test(10);
 	Span	test1;
 	Span	test2(test);
 
@@ -26,17 +26,16 @@ int	main(void)
 	//try adding numbers, but too much
 	try
 	{
+		test.addNumber(120);
 		test.addNumber(12);
-		test.addNumber(12);
-		test.addNumber(2);
-		test.addNumber(1);
+		test.addNumber(20);
 		test.addNumber(-31);
-		test.addNumber(-1);
+		test.addNumber(-1243);
 		test.addNumber(1121);
-		test.addNumber(-21);
-		test.addNumber(221);
-		test.addNumber(321);
 		test.addNumber(-421);
+		test.addNumber(221);
+		test.addNumber(221012);
+		test.addNumber(-21783221);
 		test.addNumber(10000);
 	}
 	catch (std::exception &e)
